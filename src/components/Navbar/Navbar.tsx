@@ -34,7 +34,7 @@ function Navbar({ links }: HeaderSimpleProps) {
     <Header height={56} mb={120}>
       <Container className={classes.inner}>
         <Text fz="xl" weight={"bold"}>
-          Weather App
+          Weather Forecast
         </Text>
         {/* {isAuthenticated && (
           <Group className={classes.links} spacing={5}>
