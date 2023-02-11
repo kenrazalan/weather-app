@@ -1,5 +1,5 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
@@ -13,13 +13,18 @@ function App() {
   if (isLoading) {
     return <h1>Loading ...</h1>;
   }
+  const links = [
+    {
+      link: "/app",
+      label: "Home",
+    },
+  ];
+
   return (
-    <div className="App">
-      <header>
-        <Navbar />
-      </header>
+    <div>
+      <Navbar links={links} />
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/app/login" element={<LoginPage />} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/app" element={<HomePage />} />
           <Route path="/app/weather" element={<WeatherPage />} />
