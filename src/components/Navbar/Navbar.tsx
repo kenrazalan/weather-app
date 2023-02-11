@@ -36,11 +36,11 @@ function Navbar({ links }: HeaderSimpleProps) {
         <Text fz="xl" weight={"bold"}>
           Weather App
         </Text>
-        {isAuthenticated && (
+        {/* {isAuthenticated && (
           <Group className={classes.links} spacing={5}>
             {items}
           </Group>
-        )}
+        )} */}
 
         <Group spacing={0} className={classes.social} position="right" noWrap>
           {isAuthenticated && <Button onClick={() => logout()}>Log Out</Button>}
