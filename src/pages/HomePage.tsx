@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Box, Button, Input, Text, TextInput } from "@mantine/core";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 import { capitalizeFirstLetter } from "../utils/capitatilzeFirsLetter";
@@ -31,6 +31,12 @@ export const HomePage = () => {
     }
   };
 
+  const onEnter = async (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      handleClick();
+    }
+  };
+
   return (
     <Box
       sx={() => ({
@@ -56,9 +62,12 @@ export const HomePage = () => {
         id="search"
         placeholder="Search"
         onChange={onSearch}
+        onKeyDown={onEnter}
       />
       {error && <Text color={"red"}>{capitalizeFirstLetter(error)}</Text>}
-      <Button onClick={() => handleClick()}>Display Weather</Button>
+      <Button disabled={!search} onClick={() => handleClick()}>
+        Display Weather
+      </Button>
     </Box>
   );
 };
